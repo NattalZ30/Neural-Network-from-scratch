@@ -66,6 +66,18 @@ X, y = spiral_data(samples=100, classes=3)
 dense1 = Layer_Dense(2,3)
 
 dense1.forward(X)
-print(dense1.output[:3])
+# print(dense1.output[:3])
 ##plt.scatter(X[:, 0], X[:, 1], c=y, cmap="brg")
 ##plt.show()
+###Day 4 - Activation Functions
+
+inputs = [0,2, -1, 3.3, -2.7, 1.1, 2.2, -100]
+
+
+class Activation_ReLU:
+    def forward(self, inputs):
+        self.output = np.maximum(0, inputs)
+
+activation1 = Activation_ReLU()
+activation1.forward(dense1.output)
+print(activation1.output[:5])
