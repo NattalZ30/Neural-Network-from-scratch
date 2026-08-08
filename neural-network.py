@@ -81,3 +81,18 @@ class Activation_ReLU:
 activation1 = Activation_ReLU()
 activation1.forward(dense1.output)
 print(activation1.output[:5])
+
+## Day 5 - Softmax Activation Function
+
+layer_outputs = [4.8, 1.21, 2.385]
+for i in range(len(layer_outputs)):
+    layer_outputs[i] = np.exp(layer_outputs[i]) / np.sum(np.exp(layer_outputs))
+
+class Activation_Softmax:
+    def forward(self, inputs):
+        exp_values = np.exp(inputs - np.max(inputs, axis=1, keepdims=True))
+        self.output = exp_values / np.sum(exp_values, axis=1, keepdims=True)
+
+softmax = Activation_Softmax()
+softmax.forward(activation1.output)
+print(softmax.output[:5])
